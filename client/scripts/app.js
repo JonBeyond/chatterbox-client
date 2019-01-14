@@ -13,6 +13,7 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
+    Parse.create();
     App.fetch(App.stopSpinner);
 
   },
