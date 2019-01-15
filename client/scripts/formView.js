@@ -9,6 +9,18 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
+  //grab the input from the box
+  //--> need box name??
+  //after we have the message, we need to:
+
+
+
+
+  // 1. Put the message on the server
+  //  --> we have a function for this
+  // 2. Fetch the new message list
+  // 3. Re-render the message view
+  //
     
     console.log('click!');
   },

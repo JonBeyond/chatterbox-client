@@ -3,6 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  data: null,
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -13,7 +14,7 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
-    Parse.create();
+    //Parse.create();
     App.fetch(App.stopSpinner);
 
   },
@@ -22,7 +23,8 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
-
+      App.data = data;
+      MessagesView.render();
       callback();
     });
   },
