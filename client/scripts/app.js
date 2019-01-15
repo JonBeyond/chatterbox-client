@@ -9,12 +9,18 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
     MessagesView.initialize();
-
+    RoomsView.initialize();
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+
+    let initialFetchCallback = function () {
+      App.stopSpinner();
+      MessagesView.render();
+      RoomsView.render();
+    };
+
+    App.fetch(initialFetchCallback);
 
   },
 
@@ -29,13 +35,12 @@ var App = {
           2. (optional) add new messages to the messages
           2b. (alternatively): reset all the meesages
 
-
 */
       
       
       //messages.data = data;
       //rooms.data = data; //only cares about rooms
-      MessagesView.render();
+      
       callback();
     });
   },

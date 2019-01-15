@@ -17,16 +17,16 @@ var FormView = {
       username: user,
       text: userMessage,
       roomname: room
-      }
+      };
     
     let fetchcb = function () {
       App.startSpinner();
       App.fetch(App.stopSpinner)
-    }
+    };
 
     let fetch = function () {
       fetchcb();
-    }
+    };
 
     Parse.create(fullMessage, fetch);
   },

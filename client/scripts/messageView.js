@@ -4,8 +4,10 @@ var MessageView = {
   render: _.template(`
       
       <div class="chat">
-        <div class="<%- username %>"></div> 
-        <div><%- text %></div>
+        <div class="<%- username %>">Sent by: <%- username %></div> 
+        <div class="timestamp">Sent at: <%- createdAt %></div> 
+        <div>Message content: <%- text %></div>
+        <div>Sent to room: <%- roomname %></div>
       </div>
       
     `)

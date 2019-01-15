@@ -4,8 +4,11 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-//grab all items in app.data
-//set up a listener for a new room
+  //this initialize sets up a listener to wait for the user to
+  //  create a new room
+
+  //grab all items in app.data
+  //set up a listener for a new room
   },
 
   render: function() {
@@ -14,11 +17,17 @@ var RoomsView = {
   
   renderRoom: function(room) {
     
-  }
+  },
+
+  roomTemplate: _.template(`
+      <option value ="<%-roomname%>"><%-roomname%></option>
+    `)
 
 };
-/*
-<select name="cars">
+
+/* form reference:
+
+<select name="rooms">
   <option value="volvo">Volvo</option>
   <option value="saab">Saab</option>
   <option value="fiat">Fiat</option>

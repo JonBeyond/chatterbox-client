@@ -27,13 +27,18 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
-        <button>Add Room</button>
+        <select id="room-list">
+        <option>Default: All Rooms</option>
+        </select>
+        <button>Filter by Selected Room</button>
+
+        <button>Add New Room</button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
         <input type="submit" name="submit" class="submit"/>
       </form>
+        <button id="refresh-all" type="button">Refresh All - Default</button>
     </div>
     <div id="chats"></div>
     <script src="client/env/config.js"></script>
