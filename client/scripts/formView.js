@@ -9,20 +9,26 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-  //grab the input from the box
-  //--> need box name??
-  //after we have the message, we need to:
+    let userMessage = $('#message').val();
+    let user = App.username; //username
+    let room = 'TBD'; //need to define this at some point...
 
-
-
-
-  // 1. Put the message on the server
-  //  --> we have a function for this
-  // 2. Fetch the new message list
-  // 3. Re-render the message view
-  //
+    let fullMessage = {
+      username: user,
+      text: userMessage,
+      roomname: room
+      }
     
-    console.log('click!');
+    let fetchcb = function () {
+      App.startSpinner();
+      App.fetch(App.stopSpinner)
+    }
+
+    let fetch = function () {
+      fetchcb();
+    }
+
+    Parse.create(fullMessage, fetch);
   },
 
   setStatus: function(active) {
