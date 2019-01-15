@@ -28,11 +28,10 @@
       <div id="rooms">
         Room:
         <select id="room-list">
-        <option>Default: All Rooms</option>
         </select>
         <button>Filter by Selected Room</button>
 
-        <button>Add New Room</button>
+        <button id="add-room">Add New Room</button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
@@ -43,10 +42,10 @@
     <div id="chats"></div>
     <script src="client/env/config.js"></script>
     <script src="client/scripts/parse.js"></script>
-    <script src="client/scripts/rooms.js"></script>
     <script src="client/scripts/friends.js"></script>
     <script src="client/scripts/messages.js"></script>
     <script src="client/scripts/formView.js"></script>
+    <script src="client/scripts/rooms.js"></script> <!--order of precedence correction-->
     <script src="client/scripts/roomsView.js"></script>
     <script src="client/scripts/messageView.js"></script>
     <script src="client/scripts/messagesView.js"></script>
