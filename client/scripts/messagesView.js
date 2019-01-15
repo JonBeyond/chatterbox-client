@@ -12,19 +12,26 @@ var MessagesView = {
 
   },
 
-  render: function() {
+  render: function(roomFilter, friendFilter) {
     //need to wipe div in here
-    var $target = $('#chats');
-    $('.chat').remove();
-    
-    for(var msg in App.data.results) {
-      if (App.data.results[msg].hasOwnProperty("username")) { //we may need to add additional verifications later for missing keys
-        var message  = MessageView.render(App.data.results[msg]);
-        $($target).append(message);
-      }
-      
-    }
-    
-  }
+    $('.chat').remove(); //this may be in an inappropriate place?
+  
+    for(var msg in Messages.all.results) {
 
+
+      if (Messages.all.results[msg].hasOwnProperty("username")) { //we may need to add additional verifications later for missing keys
+        MessagesView.renderMessage(Messages.all.results[msg])
+      }
+
+
+
+    }
+  },
+
+  renderMessage: function(messageObj) {
+    //render the message objec to reder format
+    var $target = $('#chats');
+    var message  = MessageView.render(messageObj);
+    $($target).append(message);
+  },
 };
