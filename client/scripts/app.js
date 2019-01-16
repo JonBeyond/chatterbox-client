@@ -27,9 +27,10 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       console.log(data); //for reference, keeping this
-      App.data = data;
+      //App.data = data;
       Messages.all = data; //this will replace that was proexisitng 
-      /*
+      Rooms.parseRoom(data);      
+/*
         After fetching:
           1. Check for new rooms
           2. (optional) add new messages to the messages

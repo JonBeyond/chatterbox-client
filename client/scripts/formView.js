@@ -4,6 +4,10 @@ var FormView = {
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    $('#room-list').change(function(){
+      let room = $('#rooms select').children("option:selected").val();
+      MessagesView.render(room);
+    });    
   },
 
   handleSubmit: function(event) {
@@ -11,24 +15,25 @@ var FormView = {
     event.preventDefault();
     let userMessage = $('#message').val();
     let user = App.username; //username
-    let room = 'TBD'; //need to define this at some point...
+
+    //update the below***************
+    let room = $('#rooms select').children("option:selected").val(); //need to define this at some point...
 
     let fullMessage = {
       username: user,
       text: userMessage,
       roomname: room
-      };
-    
+    };
+    let fetchcb2 = function () {
+      App.stopSpinner();
+      MessagesView.render();
+    };
     let fetchcb = function () {
-      App.startSpinner();
-      App.fetch(App.stopSpinner)
+      App.fetch(fetchcb2);
     };
 
-    let fetch = function () {
-      fetchcb();
-    };
-
-    Parse.create(fullMessage, fetch);
+    App.startSpinner();
+    Parse.create(fullMessage, fetchcb);
   },
 
   setStatus: function(active) {

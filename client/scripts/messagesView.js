@@ -11,24 +11,38 @@ var MessagesView = {
 
     //MessagesView.
     $('#refresh-all').on('click', MessagesView.handleSubmit);
-
+    
 
   },
 
   handleSubmit: function(event) {
     //fetch data
     //then render?
-    App.startSpinner()
-    App.fetch(App.stopSpinner);
+    let fetchcb = function () {
+      App.stopSpinner();
+      MessagesView.render();
+    };
+    App.startSpinner();
+    App.fetch(fetchcb);
+    
     
   },
 
   render: function(roomFilter, friendFilter) {
     //need to wipe div in here
+    if (roomFilter === 'Default View') {
+      roomFilter = null;
+    }
+
+
     $('.chat').remove(); //this may be in an inappropriate place?
-  
+    
     for (var msg in Messages.all.results) {
-      MessagesView.renderMessage(Messages.all.results[msg]);
+      if (roomFilter && msg.roomname === roomFilter) {
+        MessagesView.renderMessage(Messages.all.results[msg]);
+      } else {
+        MessagesView.renderMessage(Messages.all.results[msg]);
+      }
     }
   },
 
