@@ -60,19 +60,21 @@ var MessagesView = {
     let hasCreation = messageObj.hasOwnProperty("createdAt");
     
     if (!hasUser) {
-      messageObj.username = 'ERR: unknown user';
+      messageObj.username = 'ERRROR';
     }
     if (!hasText) {
-      messageObj.text = 'ERR: no message specified';
+      messageObj.text = 'ERRROR';
     }
     if (!hasRoom) {
-      messageObj.roomname = 'ERR: no room specified';
+      messageObj.roomname = 'ERRROR';
     }
     if (!hasCreation) {
       messageObj.createdAt = '0';
     }
-
-
+    
+    
+    //messageObj.username = messageObj.username.replace(/\W/g, '');
+    //messageObj.roomname = messageObj.roomname.replace(/\W/g, '');
 
     //render the message objec to reder format
     var $target = $('#chats');

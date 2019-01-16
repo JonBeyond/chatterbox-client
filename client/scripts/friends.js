@@ -8,17 +8,17 @@ var Friends = {
       //with Jquery, using this will refer to the specific
       // element that was clicked on
       let user = $(this).attr('id');
+      user.replace(/\W/g, '');
       Friends.friendList[user] = user;
       Friends.style();
     });
-
   },
   
   style: function () {
     for (let friend in Friends.friendList) {
       let $target = '#' + friend;
       //need to validate $target
-      $($target).css('background', 'green');
+      $('#chats '+ $target).css('background', 'green');
     }
   }
 };
