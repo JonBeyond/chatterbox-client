@@ -28,22 +28,29 @@ var MessagesView = {
     
   },
 
-  render: function(roomFilter, friendFilter) {
+  render: function() {
+    //check if Room.filter is defined, if it is defined, filter by it
     //need to wipe div in here
+    let roomFilter = Rooms.filter;
+
     if (roomFilter === 'Default View') {
       roomFilter = null;
     }
 
-
     $('.chat').remove(); //this may be in an inappropriate place?
-    
+    //debugger;
     for (var msg in Messages.all.results) {
-      if (roomFilter && msg.roomname === roomFilter) {
-        MessagesView.renderMessage(Messages.all.results[msg]);
+      if (roomFilter) {
+        if (Messages.all.results[msg].roomname === roomFilter) {
+          MessagesView.renderMessage(Messages.all.results[msg]);
+        }
       } else {
         MessagesView.renderMessage(Messages.all.results[msg]);
       }
     }
+    //need to apply friends styling here
+    Friends.initialize();
+    Friends.style();
   },
 
   renderMessage: function(messageObj) {

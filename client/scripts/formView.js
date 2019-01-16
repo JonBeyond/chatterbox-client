@@ -4,9 +4,9 @@ var FormView = {
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
-    $('#room-list').change(function(){
-      let room = $('#rooms select').children("option:selected").val();
-      MessagesView.render(room);
+    $('#room-list').change(function() {
+      Rooms.filter = $('#rooms select').children('option:selected').val();
+      MessagesView.render();
     });    
   },
 
